@@ -67,10 +67,6 @@ class Tutorial {
         }
 
         public static void main (String args[]){
-
-            Graph q= new Graph();
-            q.create();
-
             Trees AppleTree = new Trees();
             Trees.setNumbers(AppleTree);
             AppleTree.LenghtRadix = 2;
