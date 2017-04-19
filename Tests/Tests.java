@@ -1,464 +1,116 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import javafx.util.Pair;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Tag;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Tests {
-
     @Test
-    @Tag("deletePoint")
-    void deletePoint() {
-        ArrayList<List<Integer>> matrix = new ArrayList<>();
-        List<Integer> matrix1 = new ArrayList<>();
-        matrix1.add(0);
-        matrix1.add(4);
-        matrix1.add(2);
-        matrix1.add(-1);
-        matrix.add(matrix1);
-        List<Integer> matrix2 = new ArrayList<>();
-        matrix2.add(-1);
-        matrix2.add(0);
-        matrix2.add(7);
-        matrix2.add(6);
-        matrix.add(matrix2);
-        List<Integer> matrix3 = new ArrayList<>();
-        matrix3.add(1);
-        matrix3.add(9);
-        matrix3.add(0);
-        matrix3.add(3);
-        matrix.add(matrix3);
-        ArrayList<Integer> matrix4 = new ArrayList<>();
-        matrix4.add(-1);
-        matrix4.add(5);
-        matrix4.add(8);
-        matrix4.add(0);
-        matrix.add(matrix4);
-        ArrayList<String> name = new ArrayList<>();
-        name.add("a");
-        name.add("b");
-        name.add("c");
-        name.add("d");
-        Graph graphTest = new Graph(matrix, name);
-        Graph graph = new Graph(matrix, name);
-        List<List<Integer>> matrix0 = new ArrayList<>();
-        ArrayList<Integer> matrix12 = new ArrayList<>();
-        matrix12.add(0);
-        matrix12.add(4);
-        matrix12.add(-1);
-        matrix0.add(matrix12);
-        ArrayList<Integer> matrix22 = new ArrayList<>();
-        matrix22.add(-1);
-        matrix22.add(0);
-        matrix22.add(6);
-        matrix0.add(matrix22);
-        ArrayList<Integer> matrix32 = new ArrayList<>();
-        matrix32.add(-1);
-        matrix32.add(5);
-        matrix32.add(0);
-        matrix0.add(matrix32);
-        ArrayList<String> name2 = new ArrayList<>();
-        name2.add("a");
-        name2.add("b");
-        name2.add("d");
-        graph = new Graph(matrix0, name2);
-        assertEquals(graphTest.deletePoint("c"), graph);
+    void plus(){
+        Polynom a1 = new Polynom(4, 3);
+        Polynom a2 = new Polynom(3, 2);
+        Polynom a3 = new Polynom(2, 1);
+        Polynom a4 = new Polynom(1, 0);
+        Polynom a = a1.plus(a2).plus(a3).plus(a4);   // 4x^3 + 3x^2 + 2x + 1
+
+        Polynom b1 = new Polynom(3, 2);
+        Polynom b2 = new Polynom(5, 0);
+        Polynom b = b1.plus(b2);                     // 3x^2 + 5
+
+        Polynom c1 = new Polynom(4, 3);
+        Polynom c2 = new Polynom(6, 2);
+        Polynom c3 = new Polynom(2, 1);
+        Polynom c4 = new Polynom(6, 0);
+        Polynom c = c1.plus(c2).plus(c3).plus(c4);   //4x^3+6x^2+2x+6
+        assertEquals(c,a.plus(b));
     }
 
     @Test
-    @Tag("addPoint")
-    void addPoint() {
-        List<List<Integer>> matrix = new ArrayList<>();
-        ArrayList<Integer> matrix1 = new ArrayList<>();
-        matrix1.add(0);
-        matrix1.add(2);
-        matrix1.add(1);
-        matrix1.add(null);
-        matrix.add(matrix1);
-        ArrayList<Integer> matrix2 = new ArrayList<>();
-        matrix2.add(8);
-        matrix2.add(0);
-        matrix2.add(1);
-        matrix2.add(null);
-        matrix.add(matrix2);
-        ArrayList<Integer> matrix3 = new ArrayList<>();
-        matrix3.add(3);
-        matrix3.add(2);
-        matrix3.add(0);
-        matrix3.add(null);
-        matrix.add(matrix3);
-        ArrayList<Integer> matrix4 = new ArrayList<>();
-        matrix4.add(null);
-        matrix4.add(null);
-        matrix4.add(null);
-        matrix4.add(null);
-        matrix.add(matrix4);
-        ArrayList<String> name = new ArrayList<>();
-        name.add("a");
-        name.add("b");
-        name.add("c");
-        name.add("d");
-        Graph graphTest = new Graph(matrix, name);
-        Graph graph = new Graph(matrix, name);
-        List<List<Integer>> matrix0 = new ArrayList<>();
-        ArrayList<Integer> matrix12 = new ArrayList<>();
-        matrix12.add(0);
-        matrix12.add(2);
-        matrix12.add(1);
-        matrix0.add(matrix12);
-        ArrayList<Integer> matrix22 = new ArrayList<>();
-        matrix22.add(8);
-        matrix22.add(0);
-        matrix22.add(1);
-        matrix0.add(matrix22);
-        ArrayList<Integer> matrix32 = new ArrayList<>();
-        matrix32.add(3);
-        matrix32.add(2);
-        matrix32.add(0);
-        matrix0.add(matrix32);
-        ArrayList<String> name2 = new ArrayList<>();
-        name2.add("a");
-        name2.add("b");
-        name2.add("c");
-        graph = new Graph(matrix0, name2);
-        assertEquals(graph.addPoint("d"), graphTest);
+    void minus(){
+        Polynom a1 = new Polynom(4, 3);
+        Polynom a2 = new Polynom(3, 2);
+        Polynom a3 = new Polynom(2, 1);
+        Polynom a4 = new Polynom(1, 0);
+        Polynom a = a1.plus(a2).plus(a3).plus(a4);   // 4x^3 + 3x^2 + 2x + 1
+
+        Polynom b1 = new Polynom(3, 2);
+        Polynom b2 = new Polynom(5, 0);
+        Polynom b = b1.plus(b2);                     // 3x^2 + 5
+
+        Polynom c1 = new Polynom(4, 3);
+        Polynom c2 = new Polynom(2, 1);
+        Polynom c3 = new Polynom(-4, 0);
+        Polynom c = c1.plus(c2).plus(c3);            //4x^3+2x-4
+        assertEquals(c,a.minus(b));
     }
 
     @Test
-    @Tag("addTrack")
-    void addTrack() {
-        List<List<Integer>> matrix = new ArrayList<>();
-        ArrayList<Integer> matrix1 = new ArrayList<>();
-        matrix1.add(0);
-        matrix1.add(4);
-        matrix1.add(2);
-        matrix1.add(2);
-        matrix.add(matrix1);
-        ArrayList<Integer> matrix2 = new ArrayList<>();
-        matrix2.add(-1);
-        matrix2.add(0);
-        matrix2.add(7);
-        matrix2.add(6);
-        matrix.add(matrix2);
-        ArrayList<Integer> matrix3 = new ArrayList<>();
-        matrix3.add(1);
-        matrix3.add(9);
-        matrix3.add(0);
-        matrix3.add(3);
-        matrix.add(matrix3);
-        ArrayList<Integer> matrix4 = new ArrayList<>();
-        matrix4.add(-1);
-        matrix4.add(5);
-        matrix4.add(8);
-        matrix4.add(0);
-        matrix.add(matrix4);
-        ArrayList<String> name = new ArrayList<>();
-        name.add("a");
-        name.add("b");
-        name.add("c");
-        name.add("d");
-        Graph graphTest = new Graph(matrix, name);
-        Graph graph = new Graph(matrix, name);
-        List<List<Integer>> matrix0 = new ArrayList<>();
-        ArrayList<Integer> matrix12 = new ArrayList<>();
-        matrix12.add(0);
-        matrix12.add(4);
-        matrix12.add(2);
-        matrix12.add(-1);
-        matrix0.add(matrix12);
-        ArrayList<Integer> matrix22 = new ArrayList<>();
-        matrix22.add(-1);
-        matrix22.add(0);
-        matrix22.add(7);
-        matrix22.add(6);
-        matrix0.add(matrix22);
-        ArrayList<Integer> matrix32 = new ArrayList<>();
-        matrix32.add(1);
-        matrix32.add(9);
-        matrix32.add(0);
-        matrix32.add(3);
-        matrix0.add(matrix32);
-        ArrayList<Integer> matrix42 = new ArrayList<>();
-        matrix42.add(-1);
-        matrix42.add(5);
-        matrix42.add(8);
-        matrix42.add(0);
-        matrix0.add(matrix42);
-        ArrayList<String> name2 = new ArrayList<>();
-        name2.add("a");
-        name2.add("b");
-        name2.add("c");
-        name2.add("d");
-        graph = new Graph(matrix0, name2);
-        assertEquals(graphTest, graph.addTrack("d", "a", 2));
+    void times(){
+        Polynom a1 = new Polynom(4, 3);
+        Polynom a2 = new Polynom(3, 2);
+        Polynom a3 = new Polynom(2, 1);
+        Polynom a4 = new Polynom(1, 0);
+        Polynom a = a1.plus(a2).plus(a3).plus(a4);   // 4x^3 + 3x^2 + 2x + 1
+
+        Polynom b1 = new Polynom(3, 2);
+        Polynom b2 = new Polynom(5, 0);
+        Polynom b = b1.plus(b2);                     // 3x^2 + 5
+
+        Polynom c1 = new Polynom(12, 5);
+        Polynom c2 = new Polynom(9, 4);
+        Polynom c3 = new Polynom(26, 3);
+        Polynom c4 = new Polynom(18, 2);
+        Polynom c5 = new Polynom(10, 1);
+        Polynom c6 = new Polynom(5, 0);
+        Polynom c = c1.plus(c2).plus(c3).plus(c4).plus(c5).plus(c6); //12x^5+9x^4+26x^3+18x^2+10x+5
+        assertEquals(c,a.times(b));
     }
 
     @Test
-    @Tag("renameTrack")
-    void renameTrack() {
-        List<List<Integer>> matrix = new ArrayList<>();
-        ArrayList<Integer> matrix1 = new ArrayList<>();
-        matrix1.add(0);
-        matrix1.add(4);
-        matrix1.add(2);
-        matrix1.add(-1);
-        matrix.add(matrix1);
-        ArrayList<Integer> matrix2 = new ArrayList<>();
-        matrix2.add(-1);
-        matrix2.add(0);
-        matrix2.add(7);
-        matrix2.add(6);
-        matrix.add(matrix2);
-        ArrayList<Integer> matrix3 = new ArrayList<>();
-        matrix3.add(1);
-        matrix3.add(9);
-        matrix3.add(0);
-        matrix3.add(3);
-        matrix.add(matrix3);
-        ArrayList<Integer> matrix4 = new ArrayList<>();
-        matrix4.add(-1);
-        matrix4.add(5);
-        matrix4.add(10);
-        matrix4.add(0);
-        matrix.add(matrix4);
-        ArrayList<String> name = new ArrayList<>();
-        name.add("a");
-        name.add("b");
-        name.add("c");
-        name.add("d");
-        Graph graphTest = new Graph(matrix, name);
-        Graph graph = new Graph(matrix, name);
-        List<List<Integer>> matrix0 = new ArrayList<>();
-        ArrayList<Integer> matrix12 = new ArrayList<>();
-        matrix12.add(0);
-        matrix12.add(4);
-        matrix12.add(2);
-        matrix12.add(-1);
-        matrix0.add(matrix12);
-        ArrayList<Integer> matrix22 = new ArrayList<>();
-        matrix22.add(-1);
-        matrix22.add(0);
-        matrix22.add(7);
-        matrix22.add(6);
-        matrix0.add(matrix22);
-        ArrayList<Integer> matrix32 = new ArrayList<>();
-        matrix32.add(1);
-        matrix32.add(9);
-        matrix32.add(0);
-        matrix32.add(3);
-        matrix0.add(matrix32);
-        ArrayList<Integer> matrix42 = new ArrayList<>();
-        matrix42.add(-1);
-        matrix42.add(5);
-        matrix42.add(8);
-        matrix42.add(0);
-        matrix0.add(matrix42);
-        ArrayList<String> name2 = new ArrayList<>();
-        name2.add("a");
-        name2.add("b");
-        name2.add("c");
-        name2.add("d");
-        graph = new Graph(matrix0, name2);
-        assertEquals(graphTest, graph.renameTrack("c", "d", 10));
+    void equality(){
+        Polynom a1 = new Polynom(3, 2);
+        Polynom a2 = new Polynom(5, 0);
+        Polynom a = a1.plus(a2);                     // 3x^2 + 5
+
+        Polynom b1 = new Polynom(3, 2);
+        Polynom b2 = new Polynom(5, 0);
+        Polynom b = b1.plus(b2);                     // 3x^2 + 5
+        assertEquals(true,a.equality(b));
+
+        Polynom c1 = new Polynom(9, 2);
+        Polynom c = c1;                              // 9x^2
+        assertEquals(false,b.equality(c));
     }
 
     @Test
-    @Tag("renameTrack")
-    void deleteTrack() {
-        List<List<Integer>> matrix = new ArrayList<>();
-        ArrayList<Integer> matrix1 = new ArrayList<>();
-        matrix1.add(0);
-        matrix1.add(null);
-        matrix1.add(2);
-        matrix1.add(-1);
-        matrix.add(matrix1);
-        ArrayList<Integer> matrix2 = new ArrayList<>();
-        matrix2.add(-1);
-        matrix2.add(0);
-        matrix2.add(7);
-        matrix2.add(6);
-        matrix.add(matrix2);
-        ArrayList<Integer> matrix3 = new ArrayList<>();
-        matrix3.add(1);
-        matrix3.add(9);
-        matrix3.add(0);
-        matrix3.add(3);
-        matrix.add(matrix3);
-        ArrayList<Integer> matrix4 = new ArrayList<>();
-        matrix4.add(-1);
-        matrix4.add(5);
-        matrix4.add(8);
-        matrix4.add(0);
-        matrix.add(matrix4);
-        ArrayList<String> name = new ArrayList<>();
-        name.add("a");
-        name.add("b");
-        name.add("c");
-        name.add("d");
-        Graph graphTest = new Graph(matrix, name);
-        Graph graph = new Graph(matrix, name);
-        List<List<Integer>> matrix0 = new ArrayList<>();
-        ArrayList<Integer> matrix12 = new ArrayList<>();
-        matrix12.add(0);
-        matrix12.add(4);
-        matrix12.add(2);
-        matrix12.add(-1);
-        matrix0.add(matrix12);
-        ArrayList<Integer> matrix22 = new ArrayList<>();
-        matrix22.add(-1);
-        matrix22.add(0);
-        matrix22.add(7);
-        matrix22.add(6);
-        matrix0.add(matrix22);
-        ArrayList<Integer> matrix32 = new ArrayList<>();
-        matrix32.add(1);
-        matrix32.add(9);
-        matrix32.add(0);
-        matrix32.add(3);
-        matrix0.add(matrix32);
-        ArrayList<Integer> matrix42 = new ArrayList<>();
-        matrix42.add(-1);
-        matrix42.add(5);
-        matrix42.add(8);
-        matrix42.add(0);
-        matrix0.add(matrix42);
-        ArrayList<String> name2 = new ArrayList<>();
-        name2.add("a");
-        name2.add("b");
-        name2.add("c");
-        name2.add("d");
-        graph = new Graph(matrix0, name2);
-        assertEquals(graphTest, graph.deleteTrack("b", "a"));
+    void qwer(){
+        Polynom a1 = new Polynom(5,2);
+        Polynom a2 = new Polynom(4,1);
+        Polynom a3 = new Polynom(3,0);
+        Polynom a = a1.plus(a2).plus(a3);            //5x^2+4x+3
+        assertEquals(31,a.qwer(2));
+
+        Polynom b1 = new Polynom(5,3);
+        Polynom b2 = new Polynom(1,0);
+        Polynom b = b1.plus(b2);            //5x^3+4x+1
+        assertEquals(41,b.qwer(2));
     }
 
     @Test
-    @Tag("input")
-    void input() {
-        List<List<Integer>> matrix = new ArrayList<>();
-        ArrayList<Integer> matrix1 = new ArrayList<>();
-        matrix1.add(0);
-        matrix1.add(4);
-        matrix1.add(2);
-        matrix1.add(-1);
-        matrix.add(matrix1);
-        ArrayList<Integer> matrix2 = new ArrayList<>();
-        matrix2.add(-1);
-        matrix2.add(0);
-        matrix2.add(7);
-        matrix2.add(6);
-        matrix.add(matrix2);
-        ArrayList<Integer> matrix3 = new ArrayList<>();
-        matrix3.add(1);
-        matrix3.add(9);
-        matrix3.add(0);
-        matrix3.add(3);
-        matrix.add(matrix3);
-        ArrayList<Integer> matrix4 = new ArrayList<>();
-        matrix4.add(-1);
-        matrix4.add(5);
-        matrix4.add(8);
-        matrix4.add(0);
-        matrix.add(matrix4);
-        ArrayList<String> name = new ArrayList<>();
-        name.add("a");
-        name.add("b");
-        name.add("c");
-        name.add("d");
-        ArrayList<Pair<String, Integer>> test = new ArrayList<>();
-        test.add(new Pair("a", -1));
-        test.add(new Pair("b", 0));
-        test.add(new Pair("c", 7));
-        test.add(new Pair("d", 6));
-        Graph graphTest = new Graph(matrix, name);
-        assertEquals(graphTest.input("b"), test);
-    }
+    void dif(){
+        Polynom a1 = new Polynom(1, 3);
+        Polynom a2 = new Polynom(-12, 2);
+        Polynom a3 = new Polynom(0, 1);
+        Polynom a4 = new Polynom(-42, 0);
+        Polynom a = a1.plus(a2).plus(a3).plus(a4);   // x^3-12x^2+42
 
-    @Test
-    @Tag("output")
-    void output() {
-        List<List<Integer>> matrix = new ArrayList<>();
-        ArrayList<Integer> matrix1 = new ArrayList<>();
-        ArrayList<Pair<String, Integer>> test = new ArrayList<>();
-        matrix1.add(0);
-        matrix1.add(4);
-        matrix1.add(2);
-        test.add(new Pair("a", 2));
-        matrix1.add(-1);
-        matrix.add(matrix1);
-        ArrayList<Integer> matrix2 = new ArrayList<>();
-        matrix2.add(-1);
-        matrix2.add(0);
-        matrix2.add(7);
-        test.add(new Pair("b", 7));
-        matrix2.add(6);
-        matrix.add(matrix2);
-        ArrayList<Integer> matrix3 = new ArrayList<>();
-        matrix3.add(1);
-        matrix3.add(9);
-        matrix3.add(0);
-        test.add(new Pair("c", 0));
-        matrix3.add(3);
-        matrix.add(matrix3);
-        ArrayList<Integer> matrix4 = new ArrayList<>();
-        matrix4.add(-1);
-        matrix4.add(5);
-        matrix4.add(8);
-        test.add(new Pair("d", 8));
-        matrix4.add(0);
-        matrix.add(matrix4);
-        ArrayList<String> name = new ArrayList<>();
-        name.add("a");
-        name.add("b");
-        name.add("c");
-        name.add("d");
-        Graph graphTest = new Graph(matrix, name);
-        assertEquals(graphTest.output("c"), test);
-    }
+        Polynom b1 = new Polynom(1, 1);
+        Polynom b2 = new Polynom(-3, 0);
+        Polynom b = b1.plus(b2);                     // x-3
 
-    @Test
-    @Tag("renamePoint")
-    void renamePoint() {
-        List<List<Integer>> matrix = new ArrayList<>();
-        ArrayList<Integer> matrix1 = new ArrayList<>();
-        ArrayList<Integer> test = new ArrayList<>();
-        matrix1.add(0);
-        matrix1.add(4);
-        matrix1.add(2);
-        matrix1.add(10);
-        matrix.add(matrix1);
-        ArrayList<Integer> matrix2 = new ArrayList<>();
-        matrix2.add(-1);
-        matrix2.add(0);
-        matrix2.add(-7);
-        matrix2.add(6);
-        matrix.add(matrix2);
-        ArrayList<Integer> matrix3 = new ArrayList<>();
-        matrix3.add(1);
-        matrix3.add(9);
-        matrix3.add(0);
-        matrix3.add(3);
-        matrix.add(matrix3);
-        ArrayList<Integer> matrix4 = new ArrayList<>();
-        matrix4.add(-1);
-        matrix4.add(5);
-        matrix4.add(8);
-        matrix4.add(0);
-        matrix.add(matrix4);
-        ArrayList<String> name = new ArrayList<>();
-        name.add("a");
-        name.add("b");
-        name.add("c");
-        name.add("d");
-        ArrayList<String> name2 = new ArrayList<>();
-        name2.add("a");
-        name2.add("b");
-        name2.add("f");
-        name2.add("d");
-        Graph graphTest = new Graph(matrix, name);
-        Graph graph = new Graph(matrix, name2);
-        assertEquals(graphTest.renamePoint("c", "f"), graph);
+        Polynom c1 = new Polynom(1, 2);
+        Polynom c2 = new Polynom(-9, 1);
+        Polynom c3 = new Polynom(-27, 0);
+        Polynom c = c1.plus(c2).plus(c3);            //x^3-9x-27
+        assertEquals(c,a.dif(b));
     }
 
 }
