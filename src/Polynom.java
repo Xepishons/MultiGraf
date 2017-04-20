@@ -71,26 +71,22 @@ public class Polynom {
 
     public Polynom dif(Polynom b) { // c = a / b
         Polynom a = this;
-        int r = a.deg - b.deg;
-        Polynom c = new Polynom(0, r+1);
-        int x = 0;
-        if (a.deg >= b.deg) {
-            for (int i = a.deg; i > 0; i--) {
-                int d = a.coef[i] / b.coef[i - r];
-                c.coef[i] = a.coef[i] - b.coef[i - r];
-                a.coef[i] = 0;
-                r = r - 1;
-                for (int j = a.deg - 1; j > r; j--) {
-                    a.coef[j] = (a.coef[j] - b.coef[j - r]) * d;
-                }
+        Polynom c = new Polynom(0, a.deg);
+        if (b.deg == 0) throw new IllegalArgumentException("Деление на 0");
+        int x = a.deg,y = b.deg;
+        for(int i = 0; i>x;i++)
+            c.coef[i]=0;
+        while (x >= y) {
+            int d = a.coef[x] / b.coef[y];
+            c.coef[x] = a.coef[x] - b.coef[y]*d;
+            a.coef[x] = 0;
+            for(int i = x-1; i >= x-y; i--){
+                a.coef[i]=a.coef[i]-b.coef[y-1]*d;
             }
-            c.deg = c.degree();
-        }// else ;
-
+            x = x-1;
+        }
         return c;
     }
-
-    //найти остаток от деления
 
     @Override
     public boolean equals(Object o) {

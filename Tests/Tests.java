@@ -109,7 +109,7 @@ public class Tests {
         Polynom c1 = new Polynom(1, 2);
         Polynom c2 = new Polynom(-9, 1);
         Polynom c3 = new Polynom(-27, 0);
-        Polynom c = c1.plus(c2).plus(c3);            //x^3-9x-27
+        Polynom c = c1.plus(c2).plus(c3);            //x^2-9x-27
         assertEquals(c,a.dif(b));
     }
 
